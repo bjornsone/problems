@@ -1,0 +1,50 @@
+{% extends 'concept_template.html' %}
+
+{% block title %}
+    <title>Problem Sheet for {{concept_obj.name}}</title>
+    <meta name="description" content="Problem Sheet for {{concept_obj.name}} in math for both students and teachers." />
+{% endblock %}
+{% block questions%}
+<div class="row">
+    <div class="column left">
+        <h2>Questions</h2>
+        <table>
+            {% for questions in questions_list %}
+            <tr>
+                {% for question in questions %}
+                <td>
+                    <br>{{question.question}} <br/>
+                    {% if question.image_filename %}
+                    <img src='/static/images/questions/{{question.image_filename}}'>
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% if show_answers %}
+            <h2>Answers</h2>
+            <table>
+                {% for questions in questions_list %}
+                <tr>
+                    {% for question in questions %}
+                    <td>
+                        <br>{{question.answer | safe}}<br/>
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+    <div class="column right">
+        {% if show_answers %}
+            {% with x="abc", y="xyz" %}
+            {% include 'filter_form.html' with context %}
+            {% endwith %}
+            {% include 'other_links.html' with context %}
+        {% endif %}
+    </div>
+</div>
+<br/>
+{% endblock %}

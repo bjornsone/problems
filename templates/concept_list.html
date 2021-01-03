@@ -1,0 +1,22 @@
+{% extends 'concept_template.html' %}
+
+{% block title%}<title>Problem Sheet for {{concept_obj.name}}</title>{% endblock %}
+
+{% block questions%}
+    <h2>Questions</h2>
+    <table>
+        {% for question in questions %}
+            <tr><td>
+                {{loop.index}}. {{question.question}}
+            </td></tr>
+        {% endfor %}
+    </table>
+    <h2>Answers</h2>
+    <table>
+        {% for question in questions %}
+            <tr><td>
+                {{loop.index}}. {{question.answer | safe}}
+            </td></tr>
+        {% endfor %}
+    </table>
+{% endblock %}

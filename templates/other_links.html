@@ -1,0 +1,20 @@
+<br/>
+<img src="/static/images/shuffle.png" width="20" height="20" alt="Randomly shufflet problem set">
+&nbsp;<a href="{{redirect_path}}?{{params['shuffle']}}">Reshuffle Questions</a>
+<br/>
+<img src="/static/images/link.png" width="20" height="20" alt="Get links for sharing problem set">
+&nbsp;<a href="" id="link_to_dialog">Get Links to Questions</a>
+<br/>
+
+<div id="dialog_of_links" title="Links to Problem Sets">
+    <table><tr>
+        <td><img src="/static/images/link.png" width="20" height="20" alt="Link to questions with answers">&nbsp;Questions and Answers: </td>
+        <td><input type="text" id="qa_link"></td>
+        <td><button onclick="copyText('qa_link')">Copy Link</button></td>
+    </tr><tr>
+        <td><img src="/static/images/link.png" width="20" height="20" alt="Link to only questions">&nbsp;Questions Only: </td>
+        <td><input type="text" id="q_link"></td>
+        <td><button onclick="copyText('q_link')">Copy Link</button></td>
+    </tr></table>
+</div>
+

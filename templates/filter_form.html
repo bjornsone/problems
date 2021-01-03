@@ -1,0 +1,23 @@
+<img src="/static/images/filter.png" width="20" height="20" alt="Filter Included Problems">&nbsp;
+Problem Set Filters:<br/>
+<form method='post' action="/tag_filter">
+    <div class="widget">
+        <div id="accordion">
+            {% for tag in concept_obj.tag_names %}
+                <h3 id="tag{{loop.index0}}">{{tag}}</h3>
+                <div>
+                {% set outer_loop = loop %}
+                {% for tag_value in concept_obj['tag%d_values' % loop.index0] %}
+                    <label for="tag{{outer_loop.index0}}_{{loop.index0}}">{{tag_value}}</label>
+                    <input type="checkbox" name="tag{{outer_loop.index0}}_{{loop.index0}}" id="tag{{outer_loop.index0}}_{{loop.index0}}">
+                {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <input type="hidden" name="redirect_path" id="asdf" value="{{redirect_path}}">
+    <input type="hidden" name="nontag_params" id="asdf42" value="{{params['nontag']}}">
+    <br/>
+    <button type="submit" value="Cancel" id="cancel">Cancel</button>
+    <button value="Submit" id="submit">Update</button>
+</form>

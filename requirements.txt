@@ -1,0 +1,6 @@
+Flask==1.1.2
+google-cloud-ndb
+numpy
+mpmath
+sympy
+

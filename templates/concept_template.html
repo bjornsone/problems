@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    <script type="text/javascript" id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    {% block title%} {% endblock %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/static/sheet.css">
+    <script>
+        $( function() {
+            $( 'input[type="checkbox"]' ).checkboxradio({icon: false});
+        } );
+
+        $( function() {
+            $( "#accordion" ).accordion({
+              collapsible: true, active: false
+            });
+        } );
+        {% include 'filter_script.js' with context %}
+        $(document).ready(function(){
+            reset_filters();
+            setup_change_handlers();
+            update_titles();
+            {% include 'copy_links.js' with context %}
+        });
+
+        function copyText(id) {
+          var copyText = document.getElementById(id);
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+          document.execCommand("copy");
+        };
+    </script>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+          padding: 10px;
+        }
+    </style>
+</head>
+<body>
+{% include 'header.html' with context %}
+{% include 'parent_path.html' with context %}
+<br/><br/><img src="/static/images/instructions.png" width="20" height="20" alt="Instructions for problem set">&nbsp;
+{{concept_obj.instructions}}<br/>
+
+{% block questions%} {% endblock %}
+
+{% include 'footer.html' with context %}
+</body>
+</html>
+{% endautoescape %}

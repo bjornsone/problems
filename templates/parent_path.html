@@ -1,0 +1,9 @@
+<!--Depends on level_obj.full_name and full_paths-->
+{% for level_name in level_obj.full_name.split(',') %}
+    {% if not loop.first %} &rarr; {% endif %}
+        {% if full_paths[loop.index0] %}
+            <a href="/outline/{{full_paths[loop.index0]}}">{{level_name}}</a>
+        {% else %}
+            {{level_name}}
+    {% endif %}
+{% endfor %}

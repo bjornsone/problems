@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    <title>Math Practice Problem Sets</title>
+    <meta name="description" content="Math practice problem sets of various topics with optional answer sheets for both students and teachers." />
+  </head>
+  <body>
+    {% include 'header.html' with context %}
+    {% include 'parent_path.html' with context %}
+    <br/><br/><img src="/static/images/instructions.png" width="20" height="20" alt="Icon representing notes.">&nbsp;
+    Create custom math practice problem sets with optional answer sheets:<br/>
+    {% for concept_obj, concept_path, display_paths in concept_tuples %}
+      <div class="row">
+        {%for display_path in display_paths %}
+          {% set outer_loop = loop %}
+          <br/>{%for x in range(outer_loop.index0 + 3 - level_depth - outer_loop.length) %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% endfor %}
+          <b>{{display_path}}</b><br/>
+        {% endfor %}
+        {%for x in range(3-level_depth) %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {% endfor %}
+	    <a href='/concept_sheet/{{concept_path}}'>{{concept_obj.name}}</a> {{display_path}}<br/>
+      </div>
+    {% endfor %}
+	<br/><br/>
+  </body>
+</html>
+{% endautoescape %}

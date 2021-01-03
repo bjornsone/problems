@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+  </head>
+  <body>
+    <h1>Problem Sheet</h1>
+    {% for level_name in concept_obj.full_name.split(',') %}
+    {% if not loop.first %} -> {% endif %}
+    {% if full_paths[loop.index0] %}
+    <a href ="/outline/{{full_paths[loop.index0]}}">{{level_name}}</a>
+    {% else %}
+    {{level_name}}
+    {% endif %}
+    {% endfor %}
+    <br/><br/>{{concept_obj.instructions}}<br/>
+    <h2>Questions</h2>
+
+    {% for question in questions %}
+        <br>{{question.answer | safe}}<br/>
+    {% endfor %}
+  </body>
+</html>
+{% endautoescape %}

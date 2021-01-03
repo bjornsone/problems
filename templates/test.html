@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  <head>
+  </head>
+  <body>
+    <a href='https://github.com/GoogleCloudPlatform/appengine-guestbook-python/blob/master/index.html'>Link to Demo App</a>
+    HELLO {{ user }}! Have a nice day<br/><br/>
+
+    {% for problem in problems %}
+      <div class="row">
+	    Here is {{problem}} <br/>
+      </div>
+    {% endfor %}
+	<br/><br/>
+	Subjects: {{subjects}}
+  </body>
+</html>
+{% endautoescape %}
