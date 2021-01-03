@@ -1,6 +1,9 @@
 {% extends 'concept_template.html' %}
 
-{% block title%}<title>Problem Sheet for {{concept_obj.name}}</title>{% endblock %}
+{% block title %}
+<title>Problem Sheet for {{concept_obj.name}}</title>
+<meta name="description" content="Problem Sheet for {{concept_obj.name}} in math for both students and teachers." />
+{% endblock %}
 
 {% block questions%}
     <h2>Questions</h2>
